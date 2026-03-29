@@ -1,12 +1,12 @@
+import clsx from "clsx";
 import { useContext, useState } from "react";
 import { FaCirclePlus, FaXmark } from "react-icons/fa6";
+
 import LayoutContext from "../contexts/LayoutContext";
 
 import m1 from "../assets/m1.jpeg";
 import { AnimatePresence, motion } from "framer-motion";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { data } from "react-router-dom";
-import clsx from "clsx";
 
 const Emprunts = () => {
   const queryClient = useQueryClient();
@@ -380,7 +380,7 @@ const Emprunts = () => {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="rounded-sm px-8 py-2 text-sm font-semibold active:scale-95 cursor-pointer transition-colors bg-blue-950 text-white hover:bg-blue-800"
+                    className="rounded-sm px-8 py-2 text-sm font-semibold active:scale-95 cursor-pointer transition-colors bg-[#014455] text-white hover:bg-blue-800"
                   >
                     Ajouter
                   </button>

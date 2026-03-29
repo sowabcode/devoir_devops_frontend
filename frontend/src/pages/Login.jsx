@@ -12,7 +12,7 @@ const Login = () => {
 
       <button
         onClick={() => navigate("/livres")}
-        className="px-10 py-3 rounded-full bg-blue-800 hover:bg-blue-700 text-white cursor-pointer"
+        className="px-10 py-3 rounded-full bg-[#014455] hover:bg-[#235766] text-white cursor-pointer"
       >
         Accéder à la bibliothèque
       </button>

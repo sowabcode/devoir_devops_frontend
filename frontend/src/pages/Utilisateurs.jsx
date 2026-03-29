@@ -1,19 +1,23 @@
 import { useContext, useState } from "react";
-import LayoutContext from "../contexts/LayoutContext";
-import { FaUserPlus, FaXmark } from "react-icons/fa6";
 import { AnimatePresence, motion } from "framer-motion";
 
+import LayoutContext from "../contexts/LayoutContext";
+
 import profile from "../assets/images.jpeg";
-import { MdDeleteForever } from "react-icons/md";
-import { FaUserEdit } from "react-icons/fa";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
 import { BsSearch } from "react-icons/bs";
+import { FaUserEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
+import { FaUserPlus, FaXmark } from "react-icons/fa6";
+
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const types = [
   { id: "enseignant", nom: "Enseignant" },
   { id: "etudiant", nom: "Etudiant" },
   { id: "personnel", nom: "Personnel" },
 ];
+
 const Utilisateurs = () => {
   const queryClient = useQueryClient();
   const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -131,11 +135,6 @@ const Utilisateurs = () => {
               <BsSearch size={18} className="text-white" />
             </div>
           </div>
-          {/* <input
-            type="search"
-            placeholder="Rechercher un utilisateur..."
-            className="flex-1 border border-slate-300 py-2 rounded-lg px-2"
-          /> */}
 
           <div className="flex items-center gap-4">
             <p>Afficher :</p>
@@ -308,7 +307,7 @@ const Utilisateurs = () => {
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="rounded-sm px-8 py-2 text-sm font-semibold active:scale-95 cursor-pointer transition-colors bg-blue-950 text-white hover:bg-blue-800"
+                    className="rounded-sm px-8 py-2 text-sm font-semibold active:scale-95 cursor-pointer transition-colors bg-[#014455] text-white hover:bg-blue-800"
                   >
                     Ajouter
                   </button>
