@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         COMPOSE_FILE = "docker-compose.yml"
+        PATH = "sowabcode@MacBook-Air-de-Abdoulaye DevOps_Exam"
         // agent = "sowab"
     }
 
@@ -16,7 +17,7 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker compose build'
+                sh "cd ${PATH} docker compose build"
             }
         }
 
