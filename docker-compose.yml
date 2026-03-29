@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: "3.9"
 
 services:
@@ -33,12 +34,21 @@ services:
   # PostgreSQL
   db:
     image: postgres:16
+=======
+version: "3"
+
+services:
+
+  postgres_server:
+    image: postgres:15
+>>>>>>> a7a7234 (envoie du fichier jenkins et du docket compose, et mise a jour du readme complet)
     container_name: postgres_server
     restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: dbdit
+<<<<<<< HEAD
     ports:
       - "5432:5432"
     volumes:
@@ -68,4 +78,50 @@ volumes:
 # Réseau commun
 networks:
   dit-network:
+=======
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - biblio_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d dbdit"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://admin:admin123@postgres_server:5432/dbdit
+    depends_on:
+      postgres_server:
+        condition: service_healthy
+    networks:
+      - biblio_network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - biblio_network
+
+volumes:
+  postgres_data:
+
+networks:
+  biblio_network:
+>>>>>>> a7a7234 (envoie du fichier jenkins et du docket compose, et mise a jour du readme complet)
     driver: bridge
